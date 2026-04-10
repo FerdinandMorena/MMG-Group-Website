@@ -188,12 +188,7 @@ export default function About() {
                   <p className="text-3xl font-bold text-foreground">2018</p>
                   <p className="text-muted-foreground text-sm">Established</p>
                 </motion.div>
-                <motion.div variants={itemVariants}>
-                  <p className="text-3xl font-bold text-foreground">2</p>
-                  <p className="text-muted-foreground text-sm">
-                    Office Locations
-                  </p>
-                </motion.div>
+
                 <motion.div variants={itemVariants}>
                   <p className="text-3xl font-bold text-foreground">100%</p>
                   <p className="text-muted-foreground text-sm">SA Owned</p>
