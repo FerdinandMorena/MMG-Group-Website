@@ -247,13 +247,24 @@ export default function Works() {
   useEffect(() => {
     if (selectedProject) {
       document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.width = "100%";
+      document.body.style.top = `-${window.scrollY}px`;
     } else {
-      document.body.style.overflow = "unset";
+      const scrollY = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.width = "";
+      document.body.style.overflow = "";
+      document.body.style.top = "";
+      window.scrollTo(0, parseInt(scrollY || "0") * -1);
     }
 
     // Cleanup on unmount
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.position = "";
+      document.body.style.width = "";
+      document.body.style.overflow = "";
+      document.body.style.top = "";
     };
   }, [selectedProject]);
 
@@ -479,7 +490,7 @@ export default function Works() {
 
       {selectedProject && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -488,6 +499,7 @@ export default function Works() {
               closeProject();
             }
           }}
+          style={{ touchAction: "none" }}
         >
           <div className="relative w-full max-w-5xl overflow-hidden rounded-[2rem] bg-slate-950 shadow-2xl">
             <button
