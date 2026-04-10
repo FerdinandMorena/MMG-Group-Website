@@ -7,7 +7,7 @@ export default function Logo({ className = "", noText = false }) {
       className={`flex items-center gap-3 ${className}`}
       aria-label="MMG Building Maintenance & Management Home"
     >
-      <div className="w-full h-16 s sm:h-20 flex-shrink-0">
+      <div className="w-full h-12 sm:h-16 md:h-20 flex-shrink-0">
         <img
           src="/logo.jpeg"
           alt="MMG Logo"
