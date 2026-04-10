@@ -10,6 +10,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -17,4 +18,5 @@ body {
   background-color: #ffffff;
   color: #041f5e;
   line-height: 1.6;
+  overflow-x: hidden;
 }

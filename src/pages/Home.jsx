@@ -83,7 +83,7 @@ export default function Home() {
             animate="visible"
           >
             <motion.p
-              className="text-accent font-medium mb-4 tracking-wider uppercase text-sm"
+              className="text-accent font-medium mb-4 tracking-wider uppercase pt-10 text-sm"
               variants={itemVariants}
             >
               Professional Building Services Since 2018

@@ -22,9 +22,9 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#041f5e] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="bg-[#041f5e] text-white w-full overflow-hidden">
+      <div className="w-full px-4 sm:px-6 lg:px-8 py-16 overflow-hidden">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="lg:col-span-1">
             <div className="inline-block mb-6">
               <Logo className="text-sm" />
@@ -97,7 +97,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-7xl mx-auto">
           <p className="text-white/40 text-sm">
             © {new Date().getFullYear()} MMG Building Maintenance & Management.
             All rights reserved.
