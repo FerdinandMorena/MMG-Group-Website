@@ -128,13 +128,13 @@ export default function Contact() {
               Contact Us
             </motion.p>
             <motion.h1
-              className="font-serif text-4xl sm:text-5xl font-bold text-white mb-6 max-w-2xl text-balance"
+              className="font-serif text-2xl sm:text-5xl font-bold text-white mb-6 max-w-2xl text-balance"
               variants={itemVariants}
             >
               {"Let's Discuss Your Project"}
             </motion.h1>
             <motion.p
-              className="text-white/80 text-lg max-w-2xl leading-relaxed"
+              className="text-white/80 text-sm sm:text-lg max-w-2xl leading-relaxed"
               variants={itemVariants}
             >
               Ready to start your next building project? Get in touch with our

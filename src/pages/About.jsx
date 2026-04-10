@@ -111,13 +111,13 @@ export default function About() {
               About Us
             </motion.p>
             <motion.h1
-              className="font-serif text-4xl sm:text-5xl font-bold text-white mb-6 max-w-2xl text-balance"
+              className="font-serif text-2xl sm:text-5xl font-bold text-white mb-6 max-w-2xl text-balance"
               variants={itemVariants}
             >
               Building South Africa&apos;s Future With Excellence
             </motion.h1>
             <motion.p
-              className="text-white/80 text-lg max-w-2xl leading-relaxed"
+              className="text-white/80 text-sm sm:text-lg max-w-2xl leading-relaxed"
               variants={itemVariants}
             >
               Established in 2018, MMG Building Maintenance & Management is

@@ -80,18 +80,12 @@ export default function Footer() {
                 </p>
                 <p>Polokwane, Limpopo Province</p>
               </li>
-              <li>
-                <p className="text-white/40 text-xs uppercase tracking-wider mb-1">
-                  Satellite Office
-                </p>
-                <p>East London, Eastern Cape</p>
-              </li>
+
               <li>
                 <p className="text-white/40 text-xs uppercase tracking-wider mb-1">
                   Directors
                 </p>
                 <p>Asandiswa Situnda</p>
-                <p>Thapelo Matsobane Chepape</p>
               </li>
             </ul>
           </div>
@@ -99,19 +93,12 @@ export default function Footer() {
 
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-7xl mx-auto">
           <p className="text-white/40 text-sm">
-            © {new Date().getFullYear()} MMG Building Maintenance & Management.
-            All rights reserved.
+            © {new Date().getFullYear()} MMG Group. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            {footerLinks.legal.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-white/40 hover:text-accent transition-colors text-sm"
-              >
-                {link.name}
-              </a>
-            ))}
+            <p className="text-white/40 text-sm">
+              Developed By Ferdinand Morena
+            </p>
           </div>
         </div>
       </div>

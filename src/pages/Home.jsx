@@ -89,13 +89,13 @@ export default function Home() {
               Professional Building Services Since 2018
             </motion.p>
             <motion.h1
-              className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 text-balance"
+              className="font-serif text-2xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 text-balance"
               variants={itemVariants}
             >
               Building Excellence Through Quality & Integrity
             </motion.h1>
             <motion.p
-              className="text-lg text-white/80 mb-8 leading-relaxed max-w-2xl"
+              className="text-sm sm:text-lg text-white/80 mb-8 leading-relaxed max-w-2xl"
               variants={itemVariants}
             >
               MMG Building Maintenance & Management delivers comprehensive
