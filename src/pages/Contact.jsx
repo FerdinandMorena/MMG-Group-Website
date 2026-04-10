@@ -438,57 +438,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-
-      {/* Map Section */}
-      <section className="py-24 bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-serif text-3xl font-bold text-foreground mb-4">
-              Our Locations
-            </h2>
-            <p className="text-muted-foreground">
-              Serving clients across Limpopo and Eastern Cape provinces
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="max-w-2xl mx-auto"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.div
-              className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm text-center"
-              variants={itemVariants}
-            >
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center">
-                  <MapPin className="text-accent" size={24} />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">
-                  Head Office - Polokwane
-                </h3>
-              </div>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                Our main headquarters located in the heart of Limpopo Province,
-                serving the northern regions of South Africa with professional
-                building maintenance and construction services.
-              </p>
-              <div className="text-sm text-muted-foreground">
-                <p className="font-medium text-foreground mb-1">Address</p>
-                <p>Polokwane, Limpopo Province, South Africa</p>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
     </>
   );
 }
