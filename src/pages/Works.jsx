@@ -513,7 +513,7 @@ export default function Works() {
               <img
                 src={selectedProject.images[currentImageIndex]}
                 alt={`${selectedProject.title} image ${currentImageIndex + 1}`}
-                className="h-[55vh] w-full object-cover sm:h-[60vh]"
+                className="h-[70vh] w-full object-cover sm:h-[80vh]"
                 onTouchStart={onTouchStart}
                 onTouchMove={onTouchMove}
                 onTouchEnd={onTouchEnd}
@@ -538,29 +538,14 @@ export default function Works() {
               </div>
             </div>
 
-            <div className="space-y-4 border-t border-white/10 bg-slate-950 px-6 py-5 sm:px-8">
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.24em] text-accent">
-                    {selectedProject.category}
-                  </p>
-                  <h3 className="text-2xl font-semibold text-white">
-                    {selectedProject.title}
-                  </h3>
-                </div>
-              </div>
-
-              <p className="text-sm leading-relaxed text-white/75">
-                {selectedProject.description}
-              </p>
-
-              <div className="grid grid-cols-3 gap-3 sm:grid-cols-5">
+            <div className="border-t border-white/10 bg-slate-950 px-6 py-5 sm:px-8">
+              <div className="flex gap-3 overflow-x-auto pb-2">
                 {selectedProject.images.map((image, index) => (
                   <button
                     type="button"
                     key={image}
                     onClick={() => setCurrentImageIndex(index)}
-                    className={`overflow-hidden rounded-2xl border transition ${
+                    className={`flex-shrink-0 overflow-hidden rounded-2xl border transition ${
                       index === currentImageIndex
                         ? "border-accent"
                         : "border-white/10"
@@ -569,7 +554,7 @@ export default function Works() {
                     <img
                       src={image}
                       alt={`${selectedProject.title} thumbnail ${index + 1}`}
-                      className="h-20 w-full object-cover"
+                      className="h-20 w-20 object-cover"
                     />
                   </button>
                 ))}
