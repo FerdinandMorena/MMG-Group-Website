@@ -1,33 +1,33 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Send, Clock } from "lucide-react";
+import SEO from "../components/SEO";
+import Breadcrumb from "../components/Breadcrumb";
+import { contactMeta, localBusinessJsonLd, breadcrumbJsonLd } from "../lib/seo";
+import { SERVICES } from "../data/services";
 
 const contactInfo = [
   {
     icon: MapPin,
     title: "Head Office",
-    details: ["Polokwane", "Limpopo Province", "South Africa"],
+    details: ["Stand No: 10298 Ext 44", "Greenside, 0699", "Polokwane"],
   },
   {
     icon: Phone,
     title: "Phone",
-    details: ["+27 XX XXX XXXX"],
+    details: ["081 494 3895"],
   },
   {
     icon: Mail,
     title: "Email",
-    details: ["info@mmgbuilding.co.za"],
+    details: ["mmg.situnda@gmail.com"],
   },
 ];
 
 const services = [
-  { value: "roofing", label: "Roofing" },
-  { value: "painting", label: "Painting" },
-  { value: "flooring", label: "Flooring" },
-  { value: "construction", label: "Construction" },
-  { value: "maintenance", label: "Maintenance" },
-  { value: "masonry", label: "Masonry" },
+  ...SERVICES.map((s) => ({ value: s.id, label: s.title })),
   { value: "other", label: "Other" },
 ];
 
@@ -88,23 +88,26 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const breadcrumbs = [{ label: "Contact Us", url: null }];
+
   return (
     <>
+      <SEO {...contactMeta()} />
       <Helmet>
-        <title>Contact Us | MMG Building Maintenance & Management</title>
-        <meta
-          name="description"
-          content="Contact MMG Building Maintenance & Management for a free quote on construction, roofing, painting, flooring, and maintenance services. Offices in Polokwane and East London."
-        />
-        <meta
-          name="keywords"
-          content="contact MMG, building quote, construction services contact, Polokwane, East London"
-        />
-        <link rel="canonical" href="https://mmgbuilding.co.za/contact" />
+        <script type="application/ld+json">
+          {JSON.stringify(localBusinessJsonLd())}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbJsonLd(breadcrumbs))}
+        </script>
       </Helmet>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        <Breadcrumb items={breadcrumbs} />
+      </div>
+
       {/* Hero Banner */}
-      <section className="relative pt-32 pb-20 bg-[#041f5e] overflow-hidden">
+      <section className="relative pb-20 bg-[#041f5e] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
           style={{
@@ -137,8 +140,11 @@ export default function Contact() {
               className="text-white/80 text-sm sm:text-lg max-w-2xl leading-relaxed"
               variants={itemVariants}
             >
-              Ready to start your next building project? Get in touch with our
-              team for a free consultation and competitive quote.
+              Serving South Africa with professional building services.
+              Call/WhatsApp 081 494 3895 or email mmg.situnda@gmail.com for a
+              free quote on roofing, painting, flooring, construction, and
+              maintenance services in Polokwane, Johannesburg, Pretoria, East
+              London, and surrounding areas.
             </motion.p>
           </motion.div>
         </div>
@@ -239,6 +245,30 @@ export default function Contact() {
                     <span className="text-muted-foreground">Sunday</span>
                     <span className="text-foreground">Closed</span>
                   </div>
+                </div>
+              </motion.div>
+
+              {/* Services Links */}
+              <motion.div
+                className="p-6 bg-secondary rounded-2xl"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="font-medium text-foreground mb-4">
+                  Our Services
+                </h3>
+                <div className="grid grid-cols-2 gap-2">
+                  {SERVICES.map((service) => (
+                    <Link
+                      key={service.id}
+                      to={`/services/${service.id}`}
+                      className="text-accent hover:underline text-sm"
+                    >
+                      {service.title}
+                    </Link>
+                  ))}
                 </div>
               </motion.div>
             </div>

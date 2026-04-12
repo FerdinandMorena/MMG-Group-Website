@@ -8,114 +8,48 @@ import {
   Building,
   Wrench,
   HardHat,
+  Grid3X3,
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
+import SEO from "../components/SEO";
+import Breadcrumb from "../components/Breadcrumb";
+import { SERVICES } from "../data/services";
+import { servicesIndexMeta, breadcrumbJsonLd } from "../lib/seo";
 
-const services = [
-  {
-    id: "roofing",
-    icon: Home,
-    title: "Roofing",
-    description:
-      "Complete roof designing, restoration, and installation services including cladding, steel structures, and refurbishment for all sectors.",
-    features: [
-      "Roof Design & Planning",
-      "Installation & Cladding",
-      "Steel Structure Building",
-      "Restoration & Repairs",
-      "IBR & Corrugated Sheeting",
-      "Gutter Installation",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1632873669009-05e9da94a09b?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "painting",
-    icon: Paintbrush,
-    title: "Painting",
-    description:
-      "Professional contract painting services with specialized spray systems including epoxy paints, poly-urea, and polyurethane coatings.",
-    features: [
-      "Contract Painting",
-      "Industrial Coatings",
-      "Epoxy Paint Systems",
-      "Polyurethane Finishes",
-      "Spray Applications",
-      "Surface Preparation",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1604357209793-fca5dca89f97?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "flooring",
-    icon: Layers,
-    title: "Flooring",
-    description:
-      "Comprehensive flooring solutions from concrete and epoxy systems to vinyl and tile installations for any environment.",
-    features: [
-      "Epoxy Flooring",
-      "Polyurethane Floors",
-      "Concrete Systems",
-      "Vinyl & Tile Installation",
-      "Self-Leveling Floors",
-      "Anti-Slip Coatings",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "construction",
-    icon: Building,
-    title: "Construction",
-    description:
-      "Full building and structural construction services for residential and commercial projects of any scale.",
-    features: [
-      "Structural Building",
-      "Residential Projects",
-      "Commercial Development",
-      "Renovations",
-      "Extensions",
-      "New Builds",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "maintenance",
-    icon: Wrench,
-    title: "Maintenance",
-    description:
-      "Reactive and preventive building maintenance services ensuring your property remains in optimal condition.",
-    features: [
-      "Facilities Management",
-      "Reactive Repairs",
-      "Preventive Care",
-      "Emergency Services",
-      "Scheduled Maintenance",
-      "Property Inspections",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "masonry",
-    icon: HardHat,
-    title: "Masonry",
-    description:
-      "Expert masonry work including brick and concrete block construction, grouting, and polished concrete installations.",
-    features: [
-      "Brick Masonry",
-      "Concrete Blocks",
-      "Rib & Block Slabs",
-      "Polished Concrete",
-      "Grouting",
-      "Plastering",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?auto=format&fit=crop&w=800&q=80",
-  },
-];
+const serviceIcons = {
+  roofing: Home,
+  painting: Paintbrush,
+  flooring: Layers,
+  construction: Building,
+  maintenance: Wrench,
+  masonry: HardHat,
+  "ceilings-partitioning": Grid3X3,
+};
+
+const serviceImages = {
+  roofing:
+    "https://images.unsplash.com/photo-1632873669009-05e9da94a09b?auto=format&fit=crop&w=800&q=80",
+  painting:
+    "https://images.unsplash.com/photo-1604357209793-fca5dca89f97?auto=format&fit=crop&w=800&q=80",
+  flooring:
+    "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=800&q=80",
+  construction:
+    "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80",
+  maintenance:
+    "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80",
+  masonry:
+    "https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?auto=format&fit=crop&w=800&q=80",
+  "ceilings-partitioning":
+    "https://images.unsplash.com/photo-1503387837-b154d5074bd2?auto=format&fit=crop&w=800&q=80",
+};
+
+const services = SERVICES.map((service) => ({
+  ...service,
+  icon: serviceIcons[service.id],
+  description: service.shortDescription,
+  image: serviceImages[service.id],
+}));
 
 const sectors = [
   "Commercial Buildings",
@@ -147,23 +81,24 @@ const itemVariants = {
 };
 
 export default function Services() {
+  const meta = servicesIndexMeta();
+  const breadcrumbs = [{ label: "Services", url: null }];
+
   return (
     <>
+      <SEO {...meta} />
       <Helmet>
-        <title>Our Services | MMG Building Maintenance & Management</title>
-        <meta
-          name="description"
-          content="Explore MMG's comprehensive building services including roofing, painting, flooring, construction, maintenance, and masonry for commercial, industrial, and residential sectors."
-        />
-        <meta
-          name="keywords"
-          content="roofing services, painting services, flooring installation, construction, building maintenance, masonry, South Africa"
-        />
-        <link rel="canonical" href="https://mmgbuilding.co.za/services" />
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbJsonLd(breadcrumbs))}
+        </script>
       </Helmet>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        <Breadcrumb items={breadcrumbs} />
+      </div>
+
       {/* Hero Banner */}
-      <section className="relative pt-32 pb-20 bg-[#041f5e] overflow-hidden">
+      <section className="relative pb-20 bg-[#041f5e] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
           style={{
@@ -200,6 +135,29 @@ export default function Services() {
               cost-effective solutions with quality products and excellent
               service across all sectors.
             </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Local Services Intro */}
+      <section className="py-16 bg-secondary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-muted-foreground leading-relaxed">
+              Based in South Africa, MMG Building Maintenance & Management
+              offers comprehensive building services across Limpopo, Gauteng,
+              and Eastern Cape. Our expertise includes{" "}
+              {SERVICES.map((s) => s.title.toLowerCase()).join(", ")} for
+              residential, commercial, and industrial properties. Get fast
+              quotes for local building maintenance and construction services
+              near you.
+            </p>
           </motion.div>
         </div>
       </section>
@@ -279,13 +237,23 @@ export default function Services() {
                     transition={{ duration: 0.6, delay: 0.35 }}
                     viewport={{ once: true }}
                   >
-                    <Link
-                      to="/contact"
-                      className="inline-flex items-center gap-2 text-accent font-medium hover:underline"
-                    >
-                      Request a Quote
-                      <ArrowRight size={18} />
-                    </Link>
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+                      <Link
+                        to={`/services/${service.id}`}
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white font-medium rounded-full hover:bg-accent/90 transition-colors"
+                      >
+                        View {service.title} in South Africa
+                        <ArrowRight size={18} />
+                      </Link>
+
+                      <Link
+                        to="/contact"
+                        className="inline-flex items-center gap-2 text-primary font-medium hover:underline"
+                      >
+                        Request a Quote
+                        <ArrowRight size={18} />
+                      </Link>
+                    </div>
                   </motion.div>
                 </div>
 

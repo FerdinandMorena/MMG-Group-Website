@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -8,6 +7,9 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import SEO from "../components/SEO";
+import { SERVICES } from "../data/services";
+import { SITE, localBusinessJsonLd } from "../lib/seo";
 
 const serviceHighlights = [
   {
@@ -48,21 +50,167 @@ const itemVariants = {
 export default function Home() {
   return (
     <>
-      <Helmet>
-        <title>
-          MMG Building Maintenance & Management | Professional Construction
-          Services
-        </title>
-        <meta
-          name="description"
-          content="MMG Building Maintenance & Management provides comprehensive construction, roofing, painting, flooring, and industrial maintenance services across South Africa since 2018."
-        />
-        <meta
-          name="keywords"
-          content="building maintenance, construction, roofing, painting, flooring, South Africa, industrial services"
-        />
-        <link rel="canonical" href="https://mmgbuilding.co.za/" />
-      </Helmet>
+      <SEO
+        title={`Building Maintenance in Limpopo, Gauteng & Eastern Cape | Construction Services Near Me | ${SITE.name}`}
+        description={`${SITE.name} provides building maintenance and construction services across Limpopo, Gauteng, and Eastern Cape, South Africa. Explore ${SERVICES.map(
+          (s) => s.title,
+        ).join(", ")} and request a fast quote.`}
+        keywords={[
+          // Core home keywords
+          "building maintenance Limpopo",
+          "building maintenance Gauteng",
+          "building maintenance Eastern Cape",
+          "construction services near me",
+          "home improvement services Limpopo",
+          "home improvement services Gauteng",
+          "home improvement services Eastern Cape",
+
+          // Comprehensive service keywords
+          "roofing services Polokwane",
+          "roofing services Johannesburg",
+          "roofing services East London",
+          "painting services Limpopo",
+          "painting services Gauteng",
+          "painting services Eastern Cape",
+          "flooring services near me",
+          "construction services Polokwane",
+          "construction services Johannesburg",
+          "construction services East London",
+          "maintenance services Limpopo",
+          "maintenance services Gauteng",
+          "maintenance services Eastern Cape",
+          "masonry services near me",
+          "ceilings partitioning Polokwane",
+          "ceilings partitioning Johannesburg",
+          "ceilings partitioning East London",
+
+          // Business type keywords
+          "building contractors near me",
+          "construction companies Limpopo",
+          "construction companies Gauteng",
+          "construction companies Eastern Cape",
+          "property maintenance services",
+          "facility management Polokwane",
+          "facility management Johannesburg",
+          "facility management East London",
+
+          // Geographic keywords
+          "Polokwane building services",
+          "Johannesburg construction",
+          "Pretoria building maintenance",
+          "East London property services",
+          "Sandton commercial construction",
+          "Midrand industrial services",
+          "Centurion building contractors",
+          "Tzaneen property maintenance",
+          "Thohoyandou construction services",
+          "Mokopane building work",
+
+          // Service request keywords
+          "get building quote",
+          "free construction quote",
+          "building estimate online",
+          "roofing quote near me",
+          "painting cost Limpopo",
+          "painting cost Gauteng",
+          "painting cost Eastern Cape",
+          "flooring estimate Polokwane",
+          "flooring estimate Johannesburg",
+          "flooring estimate East London",
+
+          // Quality and expertise keywords
+          "professional building services",
+          "expert construction Limpopo",
+          "expert construction Gauteng",
+          "expert construction Eastern Cape",
+          "certified contractors near me",
+          "licensed building company",
+          "experienced maintenance Polokwane",
+          "experienced maintenance Johannesburg",
+          "experienced maintenance East London",
+          "qualified roofing specialists",
+          "trained painting technicians",
+
+          // Industry-specific keywords
+          "commercial building maintenance",
+          "industrial construction services",
+          "residential property services",
+          "contract building work",
+          "structural maintenance near me",
+          "infrastructure construction",
+          "facility building services",
+
+          // Emergency services keywords
+          "emergency building repairs",
+          "urgent maintenance services",
+          "24/7 construction support",
+          "same day building work",
+          "emergency roofing repairs",
+          "urgent painting services",
+          "quick maintenance fixes",
+
+          // Material and equipment keywords
+          "building materials supply",
+          "construction equipment rental",
+          "roofing materials Limpopo",
+          "roofing materials Gauteng",
+          "roofing materials Eastern Cape",
+          "painting supplies near me",
+          "flooring materials Polokwane",
+          "flooring materials Johannesburg",
+          "flooring materials East London",
+
+          // Seasonal keywords
+          "preventive maintenance services",
+          "year round construction",
+          "all weather building services",
+          "regular property maintenance",
+
+          // Dynamic service keywords
+          ...SERVICES.flatMap((s) => [
+            `${s.title} Limpopo`,
+            `${s.title} Gauteng`,
+            `${s.title} Eastern Cape`,
+            `${s.title} near me`,
+            `local ${s.title} near me`,
+            `${s.title} Polokwane`,
+            `${s.title} Johannesburg`,
+            `${s.title} Pretoria`,
+            `${s.title} East London`,
+            `${s.title} Sandton`,
+            `${s.title} Midrand`,
+            `${s.title} Centurion`,
+            `${s.title} Tzaneen`,
+            `${s.title} Thohoyandou`,
+            `${s.title} Mokopane`,
+            `${s.title} Port Elizabeth`,
+            `${s.title} Mthatha`,
+            `${s.title} Queenstown`,
+            `professional ${s.title}`,
+            `commercial ${s.title}`,
+            `industrial ${s.title}`,
+            `residential ${s.title}`,
+            `emergency ${s.title}`,
+            `expert ${s.title}`,
+            `${s.title} repairs`,
+            `${s.title} installation`,
+            `${s.title} maintenance`,
+            `${s.title} company`,
+            `${s.title} contractor`,
+            `${s.title} specialist`,
+            `get ${s.title} quote`,
+            `certified ${s.title}`,
+            `licensed ${s.title}`,
+            `experienced ${s.title}`,
+            `same day ${s.title}`,
+            `${s.title} materials`,
+            `${s.title} supplies`,
+            `${s.title} equipment`,
+          ]),
+        ]}
+        canonical={`${SITE.domain}/`}
+        jsonLd={localBusinessJsonLd()}
+      />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center bg-[#041f5e] overflow-hidden">
@@ -92,16 +240,17 @@ export default function Home() {
               className="font-serif text-2xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 text-balance"
               variants={itemVariants}
             >
-              Building Excellence Through Quality & Integrity
+              Building Maintenance & Construction Services in Limpopo, Gauteng &
+              Eastern Cape
             </motion.h1>
             <motion.p
               className="text-sm sm:text-lg text-white/80 mb-8 leading-relaxed max-w-2xl"
               variants={itemVariants}
             >
-              MMG Building Maintenance & Management delivers comprehensive
-              construction, maintenance, and industrial solutions across South
-              Africa. From roofing to flooring, we bring professionalism to
-              every project.
+              {SITE.name} delivers local building maintenance and construction
+              services across Limpopo, Gauteng, and Eastern Cape, South Africa.
+              From roofing to flooring, we bring professionalism to every
+              project.
             </motion.p>
 
             <motion.div
@@ -112,7 +261,7 @@ export default function Home() {
                 to="/services"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-white font-medium rounded-full hover:bg-accent/90 transition-colors"
               >
-                Our Services
+                View Services
                 <ArrowRight size={18} />
               </Link>
               <Link
@@ -179,11 +328,17 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <p className="text-accent font-medium mb-4 tracking-wider uppercase text-sm">
-              What We Do
+              Local services
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-6 text-balance">
-              Comprehensive Building Solutions
+              Home improvement & building services in Limpopo, Gauteng & Eastern
+              Cape
             </h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              Explore our core services and request a quote. For each service,
+              you can view a dedicated page optimized for South African
+              searches.
+            </p>
           </motion.div>
 
           <motion.div
@@ -238,16 +393,15 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <p className="text-accent font-medium mb-4 tracking-wider uppercase text-sm">
-                Why Choose Us
+                Why choose us
               </p>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-6 text-balance">
-                Your Trusted Partner in Building Excellence
+                Trusted building maintenance in South Africa
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                Situnda Global Solutions (PTY) LTD, trading as MMG Building
-                Maintenance & Management, has been delivering exceptional
-                building services since 2018. Our commitment to professionalism,
-                integrity, and quality sets us apart.
+                Situnda Global Solutions (PTY) LTD, trading as {SITE.name}, has
+                been delivering building services since 2018. We focus on
+                professionalism, integrity, and quality workmanship.
               </p>
 
               <motion.div
@@ -259,7 +413,7 @@ export default function Home() {
               >
                 {[
                   "100% South African Owned Company",
-                  "Offices in Limpopo & Eastern Cape",
+                  "Offices in Limpopo, Gauteng & Eastern Cape",
                   "Commercial, Domestic & Industrial Services",
                   "Expert Team of Professionals",
                 ].map((item) => (
@@ -326,11 +480,12 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white mb-6 text-balance">
-            Ready to Start Your Project?
+            Get a quote for your project in South Africa
           </h2>
           <p className="text-white/70 mb-8 leading-relaxed">
-            Contact us today for a free consultation and quote. We guarantee
-            competitive rates with top-quality service.
+            Call or WhatsApp for a fast response. We handle maintenance,
+            construction, and service work across Limpopo, Gauteng, and Eastern
+            Cape.
           </p>
           <Link
             to="/contact"

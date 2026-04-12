@@ -9,10 +9,14 @@ import {
   Users,
   Award,
 } from "lucide-react";
+import SEO from "../components/SEO";
+import Breadcrumb from "../components/Breadcrumb";
+import { aboutMeta } from "../lib/seo";
+import { organizationJsonLd, faqJsonLd, breadcrumbJsonLd } from "../lib/seo";
 
 const highlights = [
   "100% South African Owned Company",
-  "Offices in Limpopo & Eastern Cape",
+  "Offices in Limpopo, Gauteng & Eastern Cape",
   "Commercial, Domestic & Industrial",
   "Expert Team of Professionals",
 ];
@@ -50,6 +54,53 @@ const values = [
 
 const directors = [{ name: "Asandiswa Situnda", role: "Director" }];
 
+const testimonials = [
+  {
+    name: "John M.",
+    company: "Commercial Property Owner",
+    location: "Polokwane",
+    text: "MMG delivered exceptional roofing services for our warehouse. The team was professional, the work was completed on time, and the quality exceeded our expectations. Highly recommended!",
+    rating: 5,
+  },
+  {
+    name: "Sarah K.",
+    company: "Residential Client",
+    location: "Johannesburg",
+    text: "Outstanding painting and flooring work on our home renovation. The attention to detail and craftsmanship was impressive. Will definitely use their services again.",
+    rating: 5,
+  },
+  {
+    name: "David L.",
+    company: "Industrial Facility Manager",
+    location: "East London",
+    text: "Professional maintenance and construction services. They handled our ceiling installations perfectly. Reliable, skilled, and great communication throughout the project.",
+    rating: 5,
+  },
+];
+
+const faqs = [
+  {
+    q: "When was MMG Building Maintenance & Management established?",
+    a: "MMG Building Maintenance & Management was established in 2018 as a private company dedicated to providing premium building maintenance and construction services across South Africa.",
+  },
+  {
+    q: "Where are MMG's offices located?",
+    a: "We have our headquarters in Polokwane, Limpopo Province, a branch office in Johannesburg, Gauteng Province, and a satellite office in East London, Eastern Cape Province, allowing us to serve clients across South Africa effectively.",
+  },
+  {
+    q: "What services does MMG provide?",
+    a: "We provide comprehensive building maintenance and construction services including roofing, painting, flooring, ceilings & partitioning, construction, and general maintenance for commercial, industrial, and residential properties.",
+  },
+  {
+    q: "Is MMG a South African owned company?",
+    a: "Yes, MMG Building Maintenance & Management is 100% South African owned and operated, committed to supporting local businesses and communities.",
+  },
+  {
+    q: "What areas does MMG serve?",
+    a: "We serve Limpopo, Gauteng, and Eastern Cape Provinces with offices in Polokwane, Johannesburg, Pretoria, and East London, providing services across South Africa for commercial, industrial, and residential properties.",
+  },
+];
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -71,23 +122,29 @@ const itemVariants = {
 };
 
 export default function About() {
+  const breadcrumbs = [{ label: "About Us", url: null }];
+
   return (
     <>
+      <SEO {...aboutMeta()} />
       <Helmet>
-        <title>About Us | MMG Building Maintenance & Management</title>
-        <meta
-          name="description"
-          content="Learn about MMG Building Maintenance & Management - a 100% South African owned company established in 2018, providing quality building services with integrity across Limpopo and Eastern Cape."
-        />
-        <meta
-          name="keywords"
-          content="about MMG, South African construction company, building services, Polokwane, East London"
-        />
-        <link rel="canonical" href="https://mmgbuilding.co.za/about" />
+        <script type="application/ld+json">
+          {JSON.stringify(organizationJsonLd())}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(faqJsonLd(faqs))}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbJsonLd(breadcrumbs))}
+        </script>
       </Helmet>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        <Breadcrumb items={breadcrumbs} />
+      </div>
+
       {/* Hero Banner */}
-      <section className="relative pt-32 pb-20 bg-[#041f5e] overflow-hidden">
+      <section className="relative pb-20 bg-[#041f5e] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
           style={{
@@ -148,8 +205,9 @@ export default function About() {
                 public institutions, private businesses, and households.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                With headquarters in Polokwane, Limpopo Province and a satellite
-                office in East London, Eastern Cape, we are strategically
+                With headquarters in Polokwane, Limpopo Province, a branch
+                office in Johannesburg, Gauteng Province, and a satellite office
+                in East London, Eastern Cape Province, we are strategically
                 positioned to serve clients across South Africa with
                 professional industrial building maintenance and construction
                 services.
@@ -397,7 +455,7 @@ export default function About() {
                 <p className="text-muted-foreground mt-4 leading-relaxed">
                   Leading our team with expertise and dedication to delivering
                   exceptional building maintenance and construction services
-                  across South Africa.
+                  across Limpopo.
                 </p>
               </motion.div>
             ))}
@@ -411,6 +469,108 @@ export default function About() {
               REG NO: 2026/244431/07
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-24 bg-secondary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-6 text-balance">
+              What Our Clients Say
+            </h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              Don&apos;t just take our word for it. Here&apos;s what our
+              satisfied clients have to say about our building maintenance and
+              construction services.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid md:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                className="bg-white p-6 rounded-xl shadow-sm"
+                variants={itemVariants}
+              >
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <span key={i} className="text-yellow-400 text-lg">
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <p className="text-muted-foreground mb-4 italic">
+                  &ldquo;{testimonial.text}&rdquo;
+                </p>
+                <div>
+                  <p className="font-semibold text-foreground">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {testimonial.company} • {testimonial.location}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-accent font-medium mb-4 tracking-wider uppercase text-sm">
+              FAQ
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-6 text-balance">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Learn more about our company, services, and how we can help with
+              your building projects.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="space-y-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                className="bg-secondary rounded-2xl p-8"
+                variants={itemVariants}
+              >
+                <h3 className="text-lg font-semibold text-foreground mb-3">
+                  {faq.q}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">{faq.a}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 

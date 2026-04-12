@@ -9,143 +9,92 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import SEO from "../components/SEO";
+import Breadcrumb from "../components/Breadcrumb";
+import { worksMeta } from "../lib/seo";
+import { portfolioJsonLd, breadcrumbJsonLd } from "../lib/seo";
+import { SERVICES } from "../data/services";
 
 const categories = [
   "All",
-  "Roofing",
-  "Flooring",
+  "Ceilings & Partitioning",
   "Construction",
-  "Painting",
-  "Maintenance",
+  "Roofing",
 ];
 
 const projects = [
   {
     id: 1,
-    title: "Industrial Warehouse Roofing",
-    category: "Roofing",
+    title: "Bulk head ceilings",
+    category: "Ceilings & Partitioning",
     description:
-      "Complete roof installation for a 5,000 sqm industrial warehouse including IBR sheeting and gutter systems.",
-
-    image:
-      "https://images.unsplash.com/photo-1632873669009-05e9da94a09b?auto=format&fit=crop&w=800&q=80",
+      "Professional bulk head ceilings and partitioning installations with clean recessed lines, integrated lighting, and moisture-resistant finishes for contemporary interiors.",
+    image: "/ceiling/Bulk head ceilings/1.webp",
     images: [
-      "https://images.unsplash.com/photo-1632873669009-05e9da94a09b?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1581092336060-6ee94ed74815?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80",
+      "/ceiling/Bulk head ceilings/1.webp",
+      "/ceiling/Bulk head ceilings/2.webp",
+      "/ceiling/Bulk head ceilings/3.webp",
+      "/ceiling/Bulk head ceilings/4.webp",
+      "/ceiling/Bulk head ceilings/5.webp",
+      "/ceiling/Bulk head ceilings/6.webp",
+      "/ceiling/Bulk head ceilings/7.webp",
+      "/ceiling/Bulk head ceilings/8.webp",
+      "/ceiling/Bulk head ceilings/9.webp",
+      "/ceiling/Bulk head ceilings/10.webp",
+      "/ceiling/Bulk head ceilings/11.webp",
+      "/ceiling/Bulk head ceilings/12.webp",
+      "/ceiling/Bulk head ceilings/13.webp",
+      "/ceiling/Bulk head ceilings/14.webp",
+      "/ceiling/Bulk head ceilings/15.webp",
+      "/ceiling/Bulk head ceilings/16.webp",
+      "/ceiling/Bulk head ceilings/17.webp",
     ],
     featured: true,
   },
   {
     id: 2,
-    title: "Commercial Floor Coating",
-    category: "Flooring",
+    title: "Building and renovation",
+    category: "Construction",
     description:
-      "Epoxy flooring installation for a commercial warehouse with anti-slip coating.",
-
-    image:
-      "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=800&q=80",
+      "Full building renovation and construction services, combining structural upgrades, interior finishes, and practical site management to refresh existing spaces.",
+    image: "/construction/building and renovation/9.webp",
     images: [
-      "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1518733057094-95b5313b00a6?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80",
+      "/construction/building and renovation/1.webp",
+      "/construction/building and renovation/2.webp",
+      "/construction/building and renovation/3.webp",
+      "/construction/building and renovation/4.webp",
+      "/construction/building and renovation/5.webp",
+      "/construction/building and renovation/6.webp",
+      "/construction/building and renovation/7.webp",
+      "/construction/building and renovation/8.webp",
+      "/construction/building and renovation/9.webp",
+      "/construction/building and renovation/10.webp",
+      "/construction/building and renovation/11.webp",
+      "/construction/building and renovation/12.webp",
+      "/construction/building and renovation/13.webp",
     ],
     featured: true,
   },
   {
     id: 3,
-    title: "Office Building Construction",
-    category: "Construction",
-    description:
-      "New build commercial office space with modern finishes and structural work.",
-
-    image:
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80",
-    ],
-    featured: true,
-  },
-  {
-    id: 4,
-    title: "Factory Spray Painting",
-    category: "Painting",
-    description:
-      "Industrial spray painting with specialized epoxy coatings for manufacturing facility.",
-
-    image:
-      "https://images.unsplash.com/photo-1604357209793-fca5dca89f97?auto=format&fit=crop&w=800&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1604357209793-fca5dca89f97?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1496317899792-9d7dbcd928a1?auto=format&fit=crop&w=1200&q=80",
-    ],
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Shopping Center Maintenance",
-    category: "Maintenance",
-    description:
-      "Comprehensive maintenance contract for retail shopping center.",
-
-    image:
-      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80",
-    ],
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "Residential Roof Restoration",
+    title: "Waterproofing",
     category: "Roofing",
     description:
-      "Complete roof restoration and waterproofing for residential estate.",
-
-    image:
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
+      "Reliable roofing waterproofing solutions designed to protect structures from leaks, improve durability, and keep interiors dry through every season.",
+    image: "/roofing/waterproofing/1.webp",
     images: [
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1581091870620-0b03398b05e4?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
+      "/roofing/waterproofing/1.webp",
+      "/roofing/waterproofing/2.webp",
+      "/roofing/waterproofing/3.webp",
+      "/roofing/waterproofing/4.webp",
+      "/roofing/waterproofing/5.webp",
+      "/roofing/waterproofing/6.webp",
+      "/roofing/waterproofing/7.webp",
+      "/roofing/waterproofing/8.webp",
+      "/roofing/waterproofing/9.webp",
+      "/roofing/waterproofing/10.webp",
     ],
-    featured: false,
-  },
-  {
-    id: 7,
-    title: "Warehouse Floor System",
-    category: "Flooring",
-    description:
-      "Polyurethane floor system installation for cold storage warehouse.",
-
-    image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1534158592723-3e3f3c1b4106?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1508896694512-9c6ad1d8d849?auto=format&fit=crop&w=1200&q=80",
-    ],
-    featured: false,
-  },
-  {
-    id: 8,
-    title: "Office Block Extension",
-    category: "Construction",
-    description: "Two-story extension to existing commercial office building.",
-
-    image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1472220625704-91e1462799b2?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1463668952892-3b6cf5ec5f3a?auto=format&fit=crop&w=1200&q=80",
-    ],
-    featured: false,
+    featured: true,
   },
 ];
 
@@ -165,7 +114,7 @@ const itemVariants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.8, ease: "easeOut" },
   },
 };
 
@@ -268,23 +217,26 @@ export default function Works() {
     };
   }, [selectedProject]);
 
+  const breadcrumbs = [{ label: "Our Works", url: null }];
+
   return (
     <>
+      <SEO {...worksMeta()} />
       <Helmet>
-        <title>Our Works | MMG Building Maintenance & Management</title>
-        <meta
-          name="description"
-          content="Explore MMG's portfolio of completed construction, roofing, painting, flooring, and maintenance projects across South Africa's commercial and industrial sectors."
-        />
-        <meta
-          name="keywords"
-          content="construction projects, building portfolio, roofing projects, commercial construction, South Africa"
-        />
-        <link rel="canonical" href="https://mmgbuilding.co.za/works" />
+        <script type="application/ld+json">
+          {JSON.stringify(portfolioJsonLd())}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbJsonLd(breadcrumbs))}
+        </script>
       </Helmet>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        <Breadcrumb items={breadcrumbs} />
+      </div>
+
       {/* Hero Banner */}
-      <section className="relative pt-32 pb-20 bg-[#041f5e] overflow-hidden">
+      <section className="relative pb-20 bg-[#041f5e] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
           style={{
@@ -317,8 +269,10 @@ export default function Works() {
               className="text-white/80 text-sm sm:text-lg max-w-2xl leading-relaxed"
               variants={itemVariants}
             >
-              Explore our portfolio of completed projects across commercial,
-              industrial, and residential sectors throughout South Africa.
+              Explore our portfolio of completed building projects in Limpopo,
+              Gauteng, and Eastern Cape, South Africa. From roofing and
+              construction to painting and maintenance, see our quality
+              workmanship across South Africa.
             </motion.p>
           </motion.div>
         </div>
@@ -351,15 +305,15 @@ export default function Works() {
               className="mb-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               <motion.h2
                 className="text-2xl font-bold text-foreground mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                viewport={{ once: true, amount: 0.3 }}
               >
                 Featured Projects
               </motion.h2>
@@ -368,7 +322,7 @@ export default function Works() {
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.3 }}
               >
                 {projects
                   .filter((p) => p.featured)
@@ -420,8 +374,8 @@ export default function Works() {
                 className="text-2xl font-bold text-foreground mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true, amount: 0.3 }}
               >
                 All Projects
               </motion.h2>
@@ -432,7 +386,7 @@ export default function Works() {
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               {filteredProjects.map((project) => (
                 <motion.div
@@ -477,14 +431,61 @@ export default function Works() {
               className="text-center py-12"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               <p className="text-muted-foreground">
                 No projects found in this category.
               </p>
             </motion.div>
           )}
+        </div>
+      </section>
+
+      {/* Services Links */}
+      <section className="py-16 bg-secondary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <h2 className="text-2xl font-bold text-foreground mb-4">
+              Explore Our Services
+            </h2>
+            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+              See more examples of our work in roofing, construction, painting,
+              flooring, and maintenance services across South Africa.
+            </p>
+            <motion.div
+              className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              {SERVICES.map((service) => (
+                <motion.div
+                  key={service.id}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link
+                    to={`/services/${service.id}`}
+                    className="block p-4 bg-white rounded-lg hover:shadow-md transition-shadow text-center"
+                  >
+                    <h3 className="font-medium text-foreground mb-1">
+                      {service.title}
+                    </h3>
+                    <p className="text-accent text-sm">View Service →</p>
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -587,8 +588,8 @@ export default function Works() {
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-6 text-balance">
               Our Track Record
@@ -599,7 +600,7 @@ export default function Works() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             <motion.div className="text-center" variants={itemVariants}>
               <p className="text-4xl font-bold text-accent mb-2">50+</p>
@@ -628,8 +629,8 @@ export default function Works() {
             className="font-serif text-3xl sm:text-4xl font-bold text-white mb-6 text-balance"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             Ready to Start Your Project?
           </motion.h2>
@@ -637,8 +638,8 @@ export default function Works() {
             className="text-white/70 mb-8 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             Join our growing list of satisfied clients. Contact us today for a
             free consultation and quote.
@@ -646,8 +647,8 @@ export default function Works() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             <Link
               to="/contact"

@@ -8,6 +8,7 @@ const footerLinks = {
     { name: "Flooring", href: "/services#flooring" },
     { name: "Construction", href: "/services#construction" },
     { name: "Maintenance", href: "/services#maintenance" },
+    { name: "Ceilings & Partitioning", href: "/services#ceilings-partitioning" },
   ],
   company: [
     { name: "About Us", href: "/about" },
@@ -78,14 +79,23 @@ export default function Footer() {
                 <p className="text-white/40 text-xs uppercase tracking-wider mb-1">
                   Head Office
                 </p>
-                <p>Polokwane, Limpopo Province</p>
+                <p>Stand No: 10298 Ext 44</p>
+                <p>Greenside, 0699</p>
+                <p>Polokwane</p>
               </li>
 
               <li>
                 <p className="text-white/40 text-xs uppercase tracking-wider mb-1">
-                  Directors
+                  Phone
                 </p>
-                <p>Asandiswa Situnda</p>
+                <p>081 494 3895</p>
+              </li>
+
+              <li>
+                <p className="text-white/40 text-xs uppercase tracking-wider mb-1">
+                  Email
+                </p>
+                <p>mmg.situnda@gmail.com</p>
               </li>
             </ul>
           </div>
