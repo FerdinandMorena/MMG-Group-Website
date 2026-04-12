@@ -357,9 +357,7 @@ export default function Home() {
                 <h3 className="text-lg font-semibold text-white mb-2">
                   {service.title}
                 </h3>
-                <p className="text-white/70 text-sm">
-                  {service.description}
-                </p>
+                <p className="text-white/70 text-sm">{service.description}</p>
               </motion.div>
             ))}
           </motion.div>

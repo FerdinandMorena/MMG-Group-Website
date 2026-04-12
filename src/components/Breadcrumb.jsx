@@ -26,7 +26,9 @@ const Breadcrumb = ({ items }) => {
                   {item.label}
                 </Link>
               ) : (
-                <span className="text-foreground font-medium">{item.label}</span>
+                <span className="text-foreground font-medium">
+                  {item.label}
+                </span>
               )}
             </li>
           ))}
