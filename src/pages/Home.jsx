@@ -318,7 +318,7 @@ export default function Home() {
       </section>
 
       {/* Services Preview */}
-      <section className="py-24 bg-secondary">
+      <section className="pt-12 pb-24 bg-[#041f5e]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -330,11 +330,11 @@ export default function Home() {
             <p className="text-accent font-medium mb-4 tracking-wider uppercase text-sm">
               Local services
             </p>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-6 text-balance">
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white mb-6 text-balance">
               Home improvement & building services in Limpopo, Gauteng & Eastern
               Cape
             </h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-white/80 max-w-3xl mx-auto">
               Explore our core services and request a quote. For each service,
               you can view a dedicated page optimized for South African
               searches.
@@ -351,13 +351,13 @@ export default function Home() {
             {serviceHighlights.map((service) => (
               <motion.div
                 key={service.title}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-colors"
                 variants={itemVariants}
               >
-                <h3 className="text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-lg font-semibold text-white mb-2">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-white/70 text-sm">
                   {service.description}
                 </p>
               </motion.div>

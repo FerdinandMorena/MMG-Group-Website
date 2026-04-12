@@ -81,11 +81,9 @@ export default function ServiceDetail() {
         jsonLd={jsonLd}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
-        <Breadcrumb items={breadcrumbs} />
-      </div>
+      <Breadcrumb items={breadcrumbs} />
 
-      <section className="pb-14 bg-[#041f5e]">
+      <section className="pt-24 pb-14 bg-[#041f5e]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-accent font-medium mb-3 tracking-wider uppercase text-sm">
             Service in South Africa

@@ -122,7 +122,7 @@ const itemVariants = {
 };
 
 export default function About() {
-  const breadcrumbs = [{ label: "About Us", url: null }];
+  const breadcrumbs = [{ label: "About", url: null }];
 
   return (
     <>
@@ -139,12 +139,10 @@ export default function About() {
         </script>
       </Helmet>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
-        <Breadcrumb items={breadcrumbs} />
-      </div>
+      <Breadcrumb items={breadcrumbs} />
 
       {/* Hero Banner */}
-      <section className="relative pb-20 bg-[#041f5e] overflow-hidden">
+      <section className="relative pt-24 pb-20 bg-[#041f5e] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
           style={{
