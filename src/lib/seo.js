@@ -227,10 +227,27 @@ export const serviceMeta = (service) => {
     ", ",
   )}, ${GAUTENG_TOWNS.slice(0, 2).join(", ")}, ${EASTERN_CAPE_TOWNS.slice(0, 2).join(", ")}). Get a fast quote for ${service.title.toLowerCase()} for residential, commercial, and industrial properties.`;
 
+  // Generate keywords from service title and features
+  const baseKeywords = serviceKeywords(service.title);
+  const featureKeywords = service.features.flatMap((feature) => [
+    `${feature} Limpopo`,
+    `${feature} Gauteng`,
+    `${feature} Eastern Cape`,
+    `${feature} Polokwane`,
+    `${feature} Johannesburg`,
+    `${feature} Pretoria`,
+    `${feature} East London`,
+    `${feature} near me`,
+    `${feature} services`,
+    `professional ${feature}`,
+    `${feature} contractor`,
+    `${feature} specialist`,
+  ]);
+
   return {
     title,
     description,
-    keywords: serviceKeywords(service.title),
+    keywords: [...baseKeywords, ...featureKeywords],
     canonical: `${SITE.domain}/services/${service.id}`,
   };
 };
@@ -371,6 +388,26 @@ export const servicesIndexMeta = () => {
       "construction and renovation",
       "building and property services",
       "maintenance and repairs",
+
+      // Popular household service features
+      "roof inspections Limpopo",
+      "roof inspections Gauteng",
+      "roof inspections Eastern Cape",
+      "leak repairs near me",
+      "interior painting Polokwane",
+      "interior painting Johannesburg",
+      "exterior painting East London",
+      "floor sanding services",
+      "kitchen renovations Limpopo",
+      "bathroom renovations Gauteng",
+      "home extensions Eastern Cape",
+      "plumbing repairs near me",
+      "electrical repairs Polokwane",
+      "gutter cleaning Johannesburg",
+      "driveway paving East London",
+      "ceiling repairs Limpopo",
+      "retaining walls Gauteng",
+      "room dividers Eastern Cape",
 
       // Dynamic service keywords
       ...SERVICES.flatMap((s) => [

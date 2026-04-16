@@ -57,6 +57,11 @@ export default function ServiceDetail() {
   const meta = serviceMeta(service);
   const faqs = buildFaqs(service.title);
 
+  const breadcrumbs = [
+    { label: "Services", url: "/services" },
+    { label: service.title, url: null },
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -65,11 +70,6 @@ export default function ServiceDetail() {
       breadcrumbJsonLd(breadcrumbs),
     ],
   };
-
-  const breadcrumbs = [
-    { label: "Services", url: "/services" },
-    { label: service.title, url: null },
-  ];
 
   return (
     <>
