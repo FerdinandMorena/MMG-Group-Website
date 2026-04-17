@@ -104,7 +104,9 @@ export default function ServiceDetail() {
               Get a Quote
             </Link>
             <a
-              href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, "")}`}
+              href="https://wa.me/27814943895"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-6 py-3 bg-white/10 text-white font-medium rounded-full hover:bg-white/15 transition-colors"
             >
               WhatsApp
