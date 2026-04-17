@@ -7,6 +7,8 @@ import SEO from "../components/SEO";
 import Breadcrumb from "../components/Breadcrumb";
 import { contactMeta, localBusinessJsonLd, breadcrumbJsonLd } from "../lib/seo";
 import { SERVICES } from "../data/services";
+import emailjs from "@emailjs/browser";
+import { toast, Toaster } from "react-hot-toast";
 
 const contactInfo = [
   {
@@ -61,6 +63,7 @@ export default function Contact() {
     projectType: "",
     message: "",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -68,20 +71,46 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    // Basic validation
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.message ||
+      !formData.service
+    ) {
+      toast.error("Please fill in all required fields");
       setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        service: "",
-        projectType: "",
-        message: "",
+      return;
+    }
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formData,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+      .then(() => {
+        toast.success("Message sent successfully! 🎉");
+
+        setSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          service: "",
+          projectType: "",
+          message: "",
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error("Failed to send message. Try again.");
+      })
+      .finally(() => {
+        setIsSubmitting(false);
       });
-    }, 1000);
   };
 
   const handleChange = (e) => {
@@ -92,6 +121,9 @@ export default function Contact() {
 
   return (
     <>
+      {/* Toast Container */}
+      <Toaster position="top-right" />
+
       <SEO {...contactMeta()} />
       <Helmet>
         <script type="application/ld+json">
