@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import SEO from "../components/SEO";
 import Breadcrumb from "../components/Breadcrumb";
+import OptimizedImage from "../components/OptimizedImage";
 import { getServiceBySlug } from "../data/services";
 import {
   SITE,
@@ -104,7 +105,7 @@ export default function ServiceDetail() {
               Get a Quote
             </Link>
             <a
-              href="https://wa.me/27814943895"
+              href={`https://wa.me/27814943895?text=${encodeURIComponent(`Hi, I'm interested in your ${service.title} services. Can you provide more information and a quote?`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-6 py-3 bg-white/10 text-white font-medium rounded-full hover:bg-white/15 transition-colors"
@@ -116,88 +117,103 @@ export default function ServiceDetail() {
       </section>
 
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-10">
-          <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold text-foreground mb-4">
-              {service.title} services across Limpopo
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              {SITE.name} delivers {service.title.toLowerCase()} for
-              residential, commercial, and industrial properties. We focus on
-              quality workmanship, clear communication, and practical timelines.
-            </p>
-
-            <h3 className="text-xl font-semibold text-foreground mt-10 mb-4">
-              What’s included
-            </h3>
-            <ul className="grid sm:grid-cols-2 gap-3">
-              {service.features.map((f) => (
-                <li key={f} className="bg-secondary rounded-lg p-4">
-                  <span className="text-foreground font-medium">{f}</span>
-                </li>
-              ))}
-            </ul>
-
-            <h3 className="text-xl font-semibold text-foreground mt-10 mb-4">
-              Benefits
-            </h3>
-            <ul className="list-disc pl-6 text-muted-foreground space-y-2">
-              <li>Improves property value and long-term durability.</li>
-              <li>Reduces reactive repairs through better workmanship.</li>
-              <li>Professional finish suitable for commercial standards.</li>
-              <li>Local Limpopo support and faster response times.</li>
-            </ul>
-
-            <h3 className="text-xl font-semibold text-foreground mt-10 mb-4">
-              FAQs
-            </h3>
-            <div className="space-y-4">
-              {faqs.map((f) => (
-                <div key={f.q} className="border rounded-xl p-5">
-                  <p className="font-semibold text-foreground">{f.q}</p>
-                  <p className="text-muted-foreground mt-2">{f.a}</p>
-                </div>
-              ))}
-            </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Service Image */}
+          <div className="mb-12">
+            <OptimizedImage
+              src={service.image}
+              alt={`${service.title} services`}
+              className="w-full h-64 md:h-80 rounded-2xl shadow-lg"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 100vw"
+              quality={85}
+              priority={true}
+            />
           </div>
 
-          <aside className="lg:col-span-1">
-            <div className="border rounded-2xl p-6 sticky top-28">
-              <h2 className="text-lg font-semibold">Service areas</h2>
-              <p className="text-muted-foreground text-sm mt-2">
-                Limpopo, Gauteng & Eastern Cape, South Africa — including:
+          <div className="grid lg:grid-cols-3 gap-10">
+            <div className="lg:col-span-2">
+              <h2 className="text-2xl font-bold text-foreground mb-4">
+                {service.title} services across Limpopo
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                {SITE.name} delivers {service.title.toLowerCase()} for
+                residential, commercial, and industrial properties. We focus on
+                quality workmanship, clear communication, and practical
+                timelines.
               </p>
-              <ul className="mt-4 grid grid-cols-2 gap-2 text-sm">
-                {[
-                  ...LIMPOPO_TOWNS,
-                  ...GAUTENG_TOWNS,
-                  ...EASTERN_CAPE_TOWNS,
-                ].map((t) => (
-                  <li key={t} className="bg-secondary rounded-md px-3 py-2">
-                    {t}
+
+              <h3 className="text-xl font-semibold text-foreground mt-10 mb-4">
+                What’s included
+              </h3>
+              <ul className="grid sm:grid-cols-2 gap-3">
+                {service.features.map((f) => (
+                  <li key={f} className="bg-secondary rounded-lg p-4">
+                    <span className="text-foreground font-medium">{f}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-6">
-                <Link
-                  to="/contact"
-                  className="w-full inline-flex items-center justify-center px-5 py-3 bg-accent text-white font-medium rounded-full hover:bg-accent/90 transition-colors"
-                >
-                  Request a Quote
-                </Link>
-              </div>
+              <h3 className="text-xl font-semibold text-foreground mt-10 mb-4">
+                Benefits
+              </h3>
+              <ul className="list-disc pl-6 text-muted-foreground space-y-2">
+                <li>Improves property value and long-term durability.</li>
+                <li>Reduces reactive repairs through better workmanship.</li>
+                <li>Professional finish suitable for commercial standards.</li>
+                <li>Local Limpopo support and faster response times.</li>
+              </ul>
 
-              <div className="mt-3">
-                <Link
-                  to="/services"
-                  className="w-full inline-flex items-center justify-center px-5 py-3 bg-secondary text-foreground font-medium rounded-full hover:opacity-90 transition-opacity"
-                >
-                  View all services
-                </Link>
+              <h3 className="text-xl font-semibold text-foreground mt-10 mb-4">
+                FAQs
+              </h3>
+              <div className="space-y-4">
+                {faqs.map((f) => (
+                  <div key={f.q} className="border rounded-xl p-5">
+                    <p className="font-semibold text-foreground">{f.q}</p>
+                    <p className="text-muted-foreground mt-2">{f.a}</p>
+                  </div>
+                ))}
               </div>
             </div>
-          </aside>
+
+            <aside className="lg:col-span-1">
+              <div className="border rounded-2xl p-6 sticky top-28">
+                <h2 className="text-lg font-semibold">Service areas</h2>
+                <p className="text-muted-foreground text-sm mt-2">
+                  Limpopo, Gauteng & Eastern Cape, South Africa — including:
+                </p>
+                <ul className="mt-4 grid grid-cols-2 gap-2 text-sm">
+                  {[
+                    ...LIMPOPO_TOWNS,
+                    ...GAUTENG_TOWNS,
+                    ...EASTERN_CAPE_TOWNS,
+                  ].map((t) => (
+                    <li key={t} className="bg-secondary rounded-md px-3 py-2">
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-6">
+                  <Link
+                    to="/contact"
+                    className="w-full inline-flex items-center justify-center px-5 py-3 bg-accent text-white font-medium rounded-full hover:bg-accent/90 transition-colors"
+                  >
+                    Request a Quote
+                  </Link>
+                </div>
+
+                <div className="mt-3">
+                  <Link
+                    to="/services"
+                    className="w-full inline-flex items-center justify-center px-5 py-3 bg-secondary text-foreground font-medium rounded-full hover:opacity-90 transition-opacity"
+                  >
+                    View all services
+                  </Link>
+                </div>
+              </div>
+            </aside>
+          </div>
         </div>
       </section>
 

@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -14,6 +13,8 @@ import {
 } from "lucide-react";
 import SEO from "../components/SEO";
 import Breadcrumb from "../components/Breadcrumb";
+import OptimizedImage from "../components/OptimizedImage";
+import OptimizedBackground from "../components/OptimizedBackground";
 import { SERVICES } from "../data/services";
 import { servicesIndexMeta, breadcrumbJsonLd } from "../lib/seo";
 
@@ -48,7 +49,7 @@ const services = SERVICES.map((service) => ({
   ...service,
   icon: serviceIcons[service.id],
   description: service.shortDescription,
-  image: serviceImages[service.id],
+  image: service.image,
 }));
 
 const sectors = [
@@ -86,7 +87,10 @@ export default function Services() {
 
   return (
     <>
-      <SEO {...meta} />
+      <SEO {...meta} preloadImages={[
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=80",
+        ...SERVICES.slice(0, 2).map(service => service.image) // Preload first 2 service images
+      ]} />
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbJsonLd(breadcrumbs))}
@@ -97,12 +101,11 @@ export default function Services() {
 
       {/* Hero Banner */}
       <section className="relative pt-24 pb-20 bg-[#041f5e] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=80')",
-          }}
+        <OptimizedBackground
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=80"
+          className="opacity-30"
+          priority={true}
+          quality={80}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
 
@@ -263,10 +266,12 @@ export default function Services() {
                   viewport={{ once: true }}
                 >
                   <div className="aspect-[4/3] rounded-2xl overflow-hidden">
-                    <img
+                    <OptimizedImage
                       src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover"
+                      alt={`${service.title} services`}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      quality={80}
+                      className="w-full h-full"
                     />
                   </div>
                 </motion.div>

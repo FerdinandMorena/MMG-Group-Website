@@ -7,6 +7,7 @@ export const SERVICES = [
     title: "Roofing",
     shortDescription:
       "Complete roof designing, restoration, and installation services including cladding, steel structures, and refurbishment for all sectors.",
+    image: "/roofing.webp",
     features: [
       "Roof Design & Planning",
       "Installation & Cladding",
@@ -31,6 +32,7 @@ export const SERVICES = [
     title: "Painting",
     shortDescription:
       "Professional contract painting services with specialized spray systems including epoxy paints, poly-urea, and polyurethane coatings.",
+    image: "/painting.webp",
     features: [
       "Contract Painting",
       "Industrial Coatings",
@@ -56,6 +58,7 @@ export const SERVICES = [
     title: "Flooring",
     shortDescription:
       "Comprehensive flooring solutions from concrete and epoxy systems to vinyl and tile installations for any environment.",
+    image: "/flooring.webp",
     features: [
       "Epoxy Flooring",
       "Polyurethane Floors",
@@ -80,6 +83,7 @@ export const SERVICES = [
     title: "Construction",
     shortDescription:
       "Full building and structural construction services for residential and commercial projects of any scale.",
+    image: "/const.webp",
     features: [
       "Structural Building",
       "Residential Projects",
@@ -104,6 +108,7 @@ export const SERVICES = [
     title: "Maintenance",
     shortDescription:
       "Reactive and preventive building maintenance services ensuring your property remains in optimal condition.",
+    image: "/maint.webp",
     features: [
       "Facilities Management",
       "Reactive Repairs",
@@ -128,6 +133,7 @@ export const SERVICES = [
     title: "Masonry",
     shortDescription:
       "Expert masonry work including brick and concrete block construction, grouting, and polished concrete installations.",
+    image: "/mansonry.webp",
     features: [
       "Brick Masonry",
       "Concrete Blocks",
@@ -152,6 +158,7 @@ export const SERVICES = [
     title: "Ceilings & Partitioning",
     shortDescription:
       "Professional ceilings and partitioning services including suspended systems, acoustic panels, dry-walling, and maintenance for modern interiors.",
+    image: "/ceil.webp",
     features: [
       "Suspended Ceiling Installation",
       "Acoustic Ceiling Systems",

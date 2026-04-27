@@ -5,9 +5,11 @@ import {
   Hammer,
   Shield,
   CheckCircle2,
+  MessageCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import SEO from "../components/SEO";
+import OptimizedBackground from "../components/OptimizedBackground";
 import { SERVICES } from "../data/services";
 import { SITE, localBusinessJsonLd } from "../lib/seo";
 
@@ -210,16 +212,18 @@ export default function Home() {
         ]}
         canonical={`${SITE.domain}/`}
         jsonLd={localBusinessJsonLd()}
+        preloadImages={[
+          "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=80"
+        ]}
       />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center bg-[#041f5e] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=80')",
-          }}
+        <OptimizedBackground
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=80"
+          className="opacity-40"
+          priority={true}
+          quality={85}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
 
@@ -270,6 +274,15 @@ export default function Home() {
               >
                 Request a Quote
               </Link>
+              <a
+                href={`https://wa.me/${SITE.whatsapp.replace(/\s|\+/g, "")}?text=${encodeURIComponent("Hi, I'm interested in your building maintenance services. Can you provide a quote?")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-600 text-white font-medium rounded-full hover:bg-green-700 transition-colors"
+              >
+                WhatsApp Us
+                <MessageCircle size={18} />
+              </a>
             </motion.div>
 
             <motion.div

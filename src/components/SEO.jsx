@@ -10,6 +10,7 @@ export default function SEO({
   ogImage,
   jsonLd,
   noindex = false,
+  preloadImages = [],
 }) {
   const siteName = "MMG Building Maintenance & Management";
 
@@ -23,6 +24,17 @@ export default function SEO({
 
       {canonical ? <link rel="canonical" href={canonical} /> : null}
       {noindex ? <meta name="robots" content="noindex, nofollow" /> : null}
+
+      {/* Preload critical images */}
+      {toArray(preloadImages).map((imageSrc, index) => (
+        <link
+          key={`preload-${index}`}
+          rel="preload"
+          href={imageSrc}
+          as="image"
+          type={imageSrc.includes('.webp') ? 'image/webp' : 'image/jpeg'}
+        />
+      ))}
 
       {/* Open Graph */}
       {title ? <meta property="og:title" content={title} /> : null}

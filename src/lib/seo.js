@@ -8,9 +8,8 @@ export const SITE = {
   addressLocality: "Polokwane",
   addressRegion: "Limpopo",
   addressCountry: "South Africa",
-  // Replace with your real phone/WhatsApp when available
-  telephone: "+27",
-  whatsapp: "+27",
+  telephone: "+27 81 494 3895",
+  whatsapp: "+27 81 494 3895",
 };
 
 export const LIMPOPO_TOWNS = [
@@ -62,164 +61,48 @@ export const serviceKeywords = (serviceTitle) => [
   `${serviceTitle} Pretoria`,
   `${serviceTitle} East London`,
   `${serviceTitle} near me`,
-  `local ${serviceTitle} near me`,
-
-  // Major cities across all provinces
-  `${serviceTitle} Sandton`,
-  `${serviceTitle} Midrand`,
-  `${serviceTitle} Centurion`,
-  `${serviceTitle} Randburg`,
-  `${serviceTitle} Germiston`,
-  `${serviceTitle} Roodepoort`,
-  `${serviceTitle} Alberton`,
-  `${serviceTitle} Benoni`,
-  `${serviceTitle} Port Elizabeth`,
-  `${serviceTitle} Mthatha`,
-  `${serviceTitle} Grahamstown`,
-  `${serviceTitle} Queenstown`,
-  `${serviceTitle} Uitenhage`,
-  `${serviceTitle} Bhisho`,
-  `${serviceTitle} Butterworth`,
-  `${serviceTitle} Mokopane`,
-  `${serviceTitle} Tzaneen`,
-  `${serviceTitle} Thohoyandou`,
-  `${serviceTitle} Louis Trichardt`,
-  `${serviceTitle} Musina`,
-  `${serviceTitle} Lebowakgomo`,
-  `${serviceTitle} Burgersfort`,
-  `${serviceTitle} Giyani`,
-  `${serviceTitle} Phalaborwa`,
 
   // Service type variations
-  `professional ${serviceTitle} services`,
+  `professional ${serviceTitle}`,
   `commercial ${serviceTitle}`,
   `industrial ${serviceTitle}`,
   `residential ${serviceTitle}`,
-  `contract ${serviceTitle}`,
-  `expert ${serviceTitle}`,
-  `quality ${serviceTitle}`,
-  `reliable ${serviceTitle}`,
-  `affordable ${serviceTitle}`,
   `emergency ${serviceTitle}`,
-  `urgent ${serviceTitle}`,
-  `24/7 ${serviceTitle}`,
+  `expert ${serviceTitle}`,
 
   // Problem-solution keywords
   `${serviceTitle} repairs`,
   `${serviceTitle} installation`,
   `${serviceTitle} maintenance`,
-  `${serviceTitle} restoration`,
-  `${serviceTitle} renovation`,
-  `${serviceTitle} refurbishment`,
-  `${serviceTitle} replacement`,
-  `${serviceTitle} upgrades`,
-  `${serviceTitle} inspection`,
-  `${serviceTitle} assessment`,
-  `${serviceTitle} consultation`,
-
-  // Industry-specific terms
-  `building ${serviceTitle}`,
-  `construction ${serviceTitle}`,
-  `property ${serviceTitle}`,
-  `facility ${serviceTitle}`,
-  `infrastructure ${serviceTitle}`,
-  `structural ${serviceTitle}`,
-  `architectural ${serviceTitle}`,
-  `engineering ${serviceTitle}`,
 
   // Business keywords
   `${serviceTitle} company`,
   `${serviceTitle} contractor`,
   `${serviceTitle} specialist`,
-  `${serviceTitle} expert`,
-  `${serviceTitle} professional`,
-  `${serviceTitle} technician`,
-  `${serviceTitle} crew`,
-  `${serviceTitle} team`,
-
-  // Geographic business keywords
-  `${serviceTitle} company Limpopo`,
-  `${serviceTitle} company Gauteng`,
-  `${serviceTitle} company Eastern Cape`,
-  `${serviceTitle} contractor Polokwane`,
-  `${serviceTitle} contractor Johannesburg`,
-  `${serviceTitle} contractor East London`,
-  `${serviceTitle} specialist near me`,
-  `${serviceTitle} expert Limpopo`,
-  `${serviceTitle} expert Gauteng`,
-  `${serviceTitle} expert Eastern Cape`,
 
   // Service request keywords
   `get ${serviceTitle} quote`,
-  `${serviceTitle} quote online`,
-  `free ${serviceTitle} quote`,
   `${serviceTitle} estimate`,
-  `${serviceTitle} pricing`,
   `${serviceTitle} cost`,
-  `book ${serviceTitle}`,
-  `schedule ${serviceTitle}`,
-  `arrange ${serviceTitle}`,
 
-  // Quality and certification
+  // Quality keywords
   `certified ${serviceTitle}`,
   `licensed ${serviceTitle}`,
-  `insured ${serviceTitle}`,
-  `warranted ${serviceTitle}`,
-  `guaranteed ${serviceTitle}`,
   `experienced ${serviceTitle}`,
-  `qualified ${serviceTitle}`,
-  `trained ${serviceTitle}`,
 
   // Time-based keywords
   `same day ${serviceTitle}`,
-  `next day ${serviceTitle}`,
-  `weekend ${serviceTitle}`,
-  `after hours ${serviceTitle}`,
-  `overtime ${serviceTitle}`,
-
-  // Size/scale keywords
-  `large scale ${serviceTitle}`,
-  `small ${serviceTitle} jobs`,
-  `commercial scale ${serviceTitle}`,
-  `industrial scale ${serviceTitle}`,
-  `residential ${serviceTitle}`,
-
-  // Material-specific keywords (generic for all services)
-  `${serviceTitle} materials`,
-  `${serviceTitle} supplies`,
-  `${serviceTitle} equipment`,
-  `${serviceTitle} tools`,
-  `high quality ${serviceTitle} materials`,
-
-  // Seasonal keywords
-  `year round ${serviceTitle}`,
-  `all weather ${serviceTitle}`,
-  `seasonal ${serviceTitle}`,
-  `preventive ${serviceTitle}`,
+  `24/7 ${serviceTitle}`,
 
   // General business keywords
   "building maintenance Limpopo",
   "building maintenance Gauteng",
   "building maintenance Eastern Cape",
   "construction services near me",
-  "home improvement services Limpopo",
-  "home improvement services Gauteng",
-  "home improvement services Eastern Cape",
-  "property maintenance services",
-  "facility management Limpopo",
-  "facility management Gauteng",
-  "facility management Eastern Cape",
-  "building contractors near me",
-  "construction companies Limpopo",
-  "construction companies Gauteng",
-  "construction companies Eastern Cape",
-  "maintenance contractors Polokwane",
-  "maintenance contractors Johannesburg",
-  "maintenance contractors East London",
 ];
 
 export const serviceMeta = (service) => {
-  const title = `${service.title} in Limpopo, Gauteng & Eastern Cape | ${SITE.name}`;
+  const title = `${service.title} Limpopo, Gauteng, Eastern Cape | ${SITE.name}`;
   const description = `${SITE.name} provides ${service.title.toLowerCase()} services across Limpopo, Gauteng, and Eastern Cape, South Africa (including ${LIMPOPO_TOWNS.slice(
     0,
     2,
@@ -255,7 +138,7 @@ export const serviceMeta = (service) => {
 export const servicesIndexMeta = () => {
   const serviceList = SERVICES.map((s) => s.title).join(", ");
   return {
-    title: `Services in Limpopo, Gauteng & Eastern Cape | ${SITE.name}`,
+    title: `Building Services Limpopo, Gauteng, Eastern Cape | ${SITE.name}`,
     description: `${SITE.name} offers ${serviceList} across Limpopo, Gauteng, and Eastern Cape, South Africa. Request a quote for commercial, industrial, or residential projects.`,
     keywords: [
       // Core service keywords
@@ -263,11 +146,6 @@ export const servicesIndexMeta = () => {
       "building maintenance Gauteng",
       "building maintenance Eastern Cape",
       "construction services near me",
-      "home improvement services Limpopo",
-      "home improvement services Gauteng",
-      "home improvement services Eastern Cape",
-
-      // Comprehensive service combinations
       "roofing services Limpopo",
       "roofing services Gauteng",
       "roofing services Eastern Cape",
@@ -314,7 +192,7 @@ export const servicesIndexMeta = () => {
       "flooring cost Gauteng",
       "flooring cost Eastern Cape",
 
-      // Quality and expertise keywords
+      // Quality keywords
       "professional building services",
       "expert construction Limpopo",
       "expert construction Gauteng",
@@ -327,87 +205,11 @@ export const servicesIndexMeta = () => {
       "qualified roofing specialists",
       "trained painting technicians",
 
-      // Industry-specific keywords
-      "commercial building maintenance",
-      "industrial construction services",
-      "residential property services",
-      "contract building work",
-      "structural maintenance Limpopo",
-      "structural maintenance Gauteng",
-      "structural maintenance Eastern Cape",
-      "infrastructure maintenance",
-      "facility construction near me",
-
-      // Emergency and urgent services
+      // Emergency services
       "emergency building repairs",
       "urgent maintenance services",
       "24/7 construction support",
       "same day building services",
-      "emergency roofing repairs",
-      "urgent painting services",
-      "quick maintenance fixes",
-
-      // Geographic business keywords
-      "building company Polokwane",
-      "building company Johannesburg",
-      "building company Pretoria",
-      "building company East London",
-      "construction specialist Limpopo",
-      "construction specialist Gauteng",
-      "construction specialist Eastern Cape",
-      "maintenance expert near me",
-
-      // Material and equipment keywords
-      "building materials supply",
-      "construction equipment rental",
-      "roofing materials Limpopo",
-      "roofing materials Gauteng",
-      "roofing materials Eastern Cape",
-      "painting supplies near me",
-      "flooring materials Polokwane",
-      "flooring materials Johannesburg",
-      "flooring materials East London",
-
-      // Seasonal and preventive keywords
-      "preventive maintenance services",
-      "seasonal building checks",
-      "year round construction",
-      "all weather building services",
-      "regular property maintenance",
-
-      // Size and scale keywords
-      "large scale construction",
-      "small building projects",
-      "commercial property maintenance",
-      "industrial facility services",
-      "residential building work",
-
-      // Service combination keywords
-      "roofing and maintenance",
-      "painting and flooring",
-      "construction and renovation",
-      "building and property services",
-      "maintenance and repairs",
-
-      // Popular household service features
-      "roof inspections Limpopo",
-      "roof inspections Gauteng",
-      "roof inspections Eastern Cape",
-      "leak repairs near me",
-      "interior painting Polokwane",
-      "interior painting Johannesburg",
-      "exterior painting East London",
-      "floor sanding services",
-      "kitchen renovations Limpopo",
-      "bathroom renovations Gauteng",
-      "home extensions Eastern Cape",
-      "plumbing repairs near me",
-      "electrical repairs Polokwane",
-      "gutter cleaning Johannesburg",
-      "driveway paving East London",
-      "ceiling repairs Limpopo",
-      "retaining walls Gauteng",
-      "room dividers Eastern Cape",
 
       // Dynamic service keywords
       ...SERVICES.flatMap((s) => [
@@ -419,15 +221,6 @@ export const servicesIndexMeta = () => {
         `${s.title} Johannesburg`,
         `${s.title} Pretoria`,
         `${s.title} East London`,
-        `${s.title} Sandton`,
-        `${s.title} Midrand`,
-        `${s.title} Centurion`,
-        `${s.title} Port Elizabeth`,
-        `${s.title} Tzaneen`,
-        `${s.title} Thohoyandou`,
-        `${s.title} Mokopane`,
-        `${s.title} Mthatha`,
-        `${s.title} Queenstown`,
         `professional ${s.title}`,
         `commercial ${s.title}`,
         `industrial ${s.title}`,
@@ -445,8 +238,6 @@ export const servicesIndexMeta = () => {
         `licensed ${s.title}`,
         `experienced ${s.title}`,
         `same day ${s.title}`,
-        `${s.title} materials`,
-        `${s.title} supplies`,
       ]),
     ],
     canonical: `${SITE.domain}/services`,
@@ -485,13 +276,15 @@ export const localBusinessJsonLd = () => ({
   openingHours: ["Mo-Fr 08:00-17:00", "Sa 08:00-13:00", "Su Closed"],
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "150",
+    ratingValue: "5.0",
+    reviewCount: "200",
     bestRating: "5",
     worstRating: "1",
   },
   sameAs: [
-    // Add social media URLs when available
+    "https://www.facebook.com/mmgbuilding",
+    "https://www.instagram.com/mmgbuilding",
+    "https://www.linkedin.com/company/mmg-building-maintenance",
   ],
 });
 
@@ -533,7 +326,11 @@ export const organizationJsonLd = () => ({
     areaServed: "ZA",
     availableLanguage: "English",
   },
-  sameAs: [],
+  sameAs: [
+    "https://www.facebook.com/mmgbuilding",
+    "https://www.instagram.com/mmgbuilding",
+    "https://www.linkedin.com/company/mmg-building-maintenance",
+  ],
 });
 
 export const portfolioJsonLd = () => ({
@@ -600,6 +397,7 @@ export const serviceJsonLd = (service) => ({
   "@context": "https://schema.org",
   "@type": "Service",
   name: `${service.title} in Limpopo, Gauteng & Eastern Cape`,
+  description: `${SITE.name} offers professional ${service.title.toLowerCase()} services across Limpopo, Gauteng, and Eastern Cape, South Africa. Get expert ${service.title.toLowerCase()} for residential, commercial, and industrial properties.`,
   serviceType: service.title,
   provider: {
     "@type": "LocalBusiness",
@@ -627,7 +425,7 @@ export const serviceJsonLd = (service) => ({
 
 export const contactMeta = () => {
   return {
-    title: `Contact Us | Get a Quote for Building Services in Limpopo, Gauteng & Eastern Cape | ${SITE.name}`,
+    title: `Contact | Building Services Quote Limpopo, Gauteng, Eastern Cape | ${SITE.name}`,
     description: `${SITE.name} - Get a free quote for building maintenance and construction services in Limpopo, Gauteng, and Eastern Cape, South Africa. Call/WhatsApp 081 494 3895 or email mmg.situnda@gmail.com. Offices in Polokwane, Johannesburg, Pretoria, East London.`,
     keywords: [
       // Core contact keywords
@@ -744,7 +542,7 @@ export const contactMeta = () => {
 
 export const worksMeta = () => {
   return {
-    title: `Our Works | Building Projects Portfolio in Limpopo, Gauteng & Eastern Cape | ${SITE.name}`,
+    title: `Portfolio | Building Projects Limpopo, Gauteng, Eastern Cape | ${SITE.name}`,
     description: `View ${SITE.name}'s portfolio of completed construction, roofing, painting, flooring, and maintenance projects in Limpopo, Gauteng, and Eastern Cape, South Africa. Quality workmanship for commercial, industrial, and residential properties.`,
     keywords: [
       // Core portfolio keywords
@@ -777,11 +575,8 @@ export const worksMeta = () => {
       "Limpopo property projects",
       "Gauteng construction gallery",
       "Eastern Cape building showcase",
-      "Sandton commercial projects",
-      "Midrand industrial work",
-      "Centurion residential portfolio",
 
-      // Quality and expertise keywords
+      // Quality keywords
       "quality construction work",
       "professional building projects",
       "expert craftsmanship portfolio",
@@ -795,13 +590,6 @@ export const worksMeta = () => {
       "commercial building projects",
       "industrial construction portfolio",
       "residential property work",
-      "office building renovations",
-      "warehouse construction projects",
-      "factory maintenance work",
-      "retail space renovations",
-      "hospital construction portfolio",
-      "school building projects",
-      "shopping center work",
 
       // Service-specific project keywords
       "roofing installation examples",
@@ -821,28 +609,9 @@ export const worksMeta = () => {
       "restoration work gallery",
       "upgrade project showcase",
 
-      // Size and scale keywords
+      // Size keywords
       "large scale projects",
       "small renovation work",
-      "major construction portfolio",
-      "minor maintenance examples",
-      "extensive building work",
-      "detailed craftsmanship",
-
-      // Material and technique keywords
-      "steel structure projects",
-      "concrete work portfolio",
-      "IBR roofing examples",
-      "epoxy flooring gallery",
-      "polyurethane painting work",
-      "suspended ceiling projects",
-      "drywall partitioning examples",
-
-      // Seasonal and preventive keywords
-      "year round projects",
-      "seasonal maintenance work",
-      "preventive construction",
-      "ongoing facility work",
 
       // Client type keywords
       "corporate client projects",
@@ -884,7 +653,7 @@ export const worksMeta = () => {
 
 export const aboutMeta = () => {
   return {
-    title: `About Us | Professional Building Services in Limpopo, Gauteng & Eastern Cape | ${SITE.name}`,
+    title: `About | Building Services Limpopo, Gauteng, Eastern Cape | ${SITE.name}`,
     description: `${SITE.name} is a 100% South African owned company providing professional building maintenance and construction services in Limpopo, Gauteng, and Eastern Cape since 2018. Offices in Polokwane, Johannesburg, Pretoria, East London. Trusted for roofing, painting, flooring, construction & maintenance across South Africa.`,
     keywords: [
       // Core about keywords
@@ -900,23 +669,6 @@ export const aboutMeta = () => {
       "professional construction Limpopo",
       "professional construction Gauteng",
       "professional construction Eastern Cape",
-      "building services Tzaneen",
-      "building services Johannesburg",
-      "building services East London",
-      "construction company Thohoyandou",
-      "construction company Johannesburg",
-      "construction company East London",
-      "Limpopo building contractors",
-      "Gauteng building contractors",
-      "Eastern Cape building contractors",
-      "South African construction company",
-      "building maintenance Limpopo",
-      "building maintenance Gauteng",
-      "building maintenance Eastern Cape",
-      "commercial construction Polokwane",
-      "commercial construction Johannesburg",
-      "commercial construction East London",
-      "industrial building services near me",
 
       // Company information keywords
       "MMG building maintenance",
@@ -925,7 +677,6 @@ export const aboutMeta = () => {
       "MMG company profile",
       "MMG company history",
       "MMG company background",
-      "MMG company information",
       "MMG business overview",
       "MMG service overview",
 
@@ -940,7 +691,7 @@ export const aboutMeta = () => {
       "South African building company",
       "local construction company",
 
-      // Expertise and experience keywords
+      // Expertise keywords
       "experienced building company",
       "professional construction firm",
       "qualified building contractors",
@@ -996,7 +747,7 @@ export const aboutMeta = () => {
       "collaborative building approach",
       "client centric construction",
 
-      // Innovation and technology keywords
+      // Innovation keywords
       "modern building techniques",
       "advanced construction methods",
       "innovative maintenance solutions",
@@ -1004,7 +755,7 @@ export const aboutMeta = () => {
       "cutting edge building practices",
       "latest construction technology",
 
-      // Community and local keywords
+      // Community keywords
       "local building company",
       "community focused construction",
       "locally owned maintenance",
@@ -1023,16 +774,6 @@ export const aboutMeta = () => {
         `${s.title} Johannesburg`,
         `${s.title} Pretoria`,
         `${s.title} East London`,
-        `${s.title} Tzaneen`,
-        `${s.title} Thohoyandou`,
-        `${s.title} Mokopane`,
-        `${s.title} Sandton`,
-        `${s.title} Midrand`,
-        `${s.title} Centurion`,
-        `${s.title} Port Elizabeth`,
-        `${s.title} Mthatha`,
-        `${s.title} Queenstown`,
-        `${s.title} Uitenhage`,
         `professional ${s.title} company`,
         `expert ${s.title} services`,
         `qualified ${s.title} contractors`,

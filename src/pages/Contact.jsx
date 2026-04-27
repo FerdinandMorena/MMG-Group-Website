@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Send, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Send, Clock, MessageCircle } from "lucide-react";
 import SEO from "../components/SEO";
 import Breadcrumb from "../components/Breadcrumb";
 import { contactMeta, localBusinessJsonLd, breadcrumbJsonLd } from "../lib/seo";
@@ -19,6 +19,11 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
+    details: ["081 494 3895"],
+  },
+  {
+    icon: MessageCircle,
+    title: "WhatsApp",
     details: ["081 494 3895"],
   },
   {
@@ -238,7 +243,18 @@ export default function Contact() {
                             key={detail}
                             className="text-muted-foreground text-sm"
                           >
-                            {detail}
+                            {info.title === "WhatsApp" ? (
+                              <a
+                                href={`https://wa.me/27814943895?text=${encodeURIComponent("Hi, I would like to get in touch regarding your building services.")}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-accent hover:underline"
+                              >
+                                {detail}
+                              </a>
+                            ) : (
+                              detail
+                            )}
                           </p>
                         ))}
                       </div>
