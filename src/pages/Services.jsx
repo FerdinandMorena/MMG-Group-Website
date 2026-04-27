@@ -87,10 +87,13 @@ export default function Services() {
 
   return (
     <>
-      <SEO {...meta} preloadImages={[
-        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=80",
-        ...SERVICES.slice(0, 2).map(service => service.image) // Preload first 2 service images
-      ]} />
+      <SEO
+        {...meta}
+        preloadImages={[
+          "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=80",
+          ...SERVICES.slice(0, 2).map((service) => service.image), // Preload first 2 service images
+        ]}
+      />
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbJsonLd(breadcrumbs))}

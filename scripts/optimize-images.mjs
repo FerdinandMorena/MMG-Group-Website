@@ -1,17 +1,17 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import sharp from 'sharp';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import sharp from "sharp";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Directories to process
-const publicDir = path.join(__dirname, '../public');
-const imageExtensions = ['.jpg', '.jpeg', '.png'];
+const publicDir = path.join(__dirname, "../public");
+const imageExtensions = [".jpg", ".jpeg", ".png"];
 
 async function optimizeImages() {
-  console.log('🔍 Scanning for images to optimize...');
+  console.log("🔍 Scanning for images to optimize...");
 
   const imageFiles = [];
 
@@ -40,7 +40,7 @@ async function optimizeImages() {
 
   for (const imagePath of imageFiles) {
     const relativePath = path.relative(publicDir, imagePath);
-    const webpPath = imagePath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+    const webpPath = imagePath.replace(/\.(jpg|jpeg|png)$/i, ".webp");
 
     try {
       // Check if WebP version already exists
@@ -62,16 +62,20 @@ async function optimizeImages() {
       // Get file sizes for comparison
       const originalSize = fs.statSync(imagePath).size;
       const webpSize = fs.statSync(webpPath).size;
-      const savings = ((originalSize - webpSize) / originalSize * 100).toFixed(1);
+      const savings = (
+        ((originalSize - webpSize) / originalSize) *
+        100
+      ).toFixed(1);
 
-      console.log(`✅ Converted ${relativePath} (${(originalSize / 1024).toFixed(1)}KB → ${(webpSize / 1024).toFixed(1)}KB, ${savings}% smaller)`);
-
+      console.log(
+        `✅ Converted ${relativePath} (${(originalSize / 1024).toFixed(1)}KB → ${(webpSize / 1024).toFixed(1)}KB, ${savings}% smaller)`,
+      );
     } catch (error) {
       console.error(`❌ Failed to convert ${relativePath}:`, error.message);
     }
   }
 
-  console.log('🎉 Image optimization complete!');
+  console.log("🎉 Image optimization complete!");
 }
 
 // Run the optimization

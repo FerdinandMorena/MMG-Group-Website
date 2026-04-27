@@ -1,15 +1,15 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from "react";
 
 const OptimizedImage = ({
   src,
   alt,
-  className = '',
+  className = "",
   width,
   height,
   priority = false,
-  placeholder = 'blur',
+  placeholder = "blur",
   blurDataURL,
-  sizes = '100vw',
+  sizes = "100vw",
   quality = 75,
   ...props
 }) => {
@@ -32,9 +32,9 @@ const OptimizedImage = ({
         });
       },
       {
-        rootMargin: '50px', // Start loading 50px before the image enters viewport
+        rootMargin: "50px", // Start loading 50px before the image enters viewport
         threshold: 0.1,
-      }
+      },
     );
 
     observer.observe(imgRef.current);
@@ -47,7 +47,7 @@ const OptimizedImage = ({
     if (!baseSrc) return baseSrc;
 
     // For local images, generate responsive versions if they exist
-    if (!baseSrc.startsWith('http') && baseSrc.startsWith('/')) {
+    if (!baseSrc.startsWith("http") && baseSrc.startsWith("/")) {
       // For now, return the original - in production you'd have multiple sizes
       return baseSrc;
     }
@@ -57,10 +57,10 @@ const OptimizedImage = ({
 
   // Generate WebP version for local images
   const getWebPSrc = (baseSrc) => {
-    if (!baseSrc || baseSrc.startsWith('http')) return null;
+    if (!baseSrc || baseSrc.startsWith("http")) return null;
 
     // Convert local images to WebP if they exist
-    return baseSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+    return baseSrc.replace(/\.(jpg|jpeg|png)$/i, ".webp");
   };
 
   const handleLoad = () => {
@@ -82,7 +82,7 @@ const OptimizedImage = ({
       style={{ width, height }}
     >
       {/* Blur placeholder */}
-      {placeholder === 'blur' && blurDataURL && !isLoaded && (
+      {placeholder === "blur" && blurDataURL && !isLoaded && (
         <img
           src={blurDataURL}
           alt=""
@@ -114,12 +114,12 @@ const OptimizedImage = ({
             alt={alt}
             width={width}
             height={height}
-            loading={priority ? 'eager' : 'lazy'}
+            loading={priority ? "eager" : "lazy"}
             decoding="async"
             onLoad={handleLoad}
             onError={handleError}
             className={`w-full h-full object-cover transition-opacity duration-300 ${
-              isLoaded ? 'opacity-100' : 'opacity-0'
+              isLoaded ? "opacity-100" : "opacity-0"
             }`}
             sizes={sizes}
             {...props}
@@ -131,8 +131,16 @@ const OptimizedImage = ({
       {hasError && (
         <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
           <div className="text-gray-400 text-sm text-center p-4">
-            <svg className="w-8 h-8 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+            <svg
+              className="w-8 h-8 mx-auto mb-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                clipRule="evenodd"
+              />
             </svg>
             Image unavailable
           </div>

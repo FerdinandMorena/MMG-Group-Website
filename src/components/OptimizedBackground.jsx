@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const OptimizedBackground = ({
   src,
-  className = '',
+  className = "",
   style = {},
   priority = false,
   quality = 80,
   ...props
 }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageSrc, setImageSrc] = useState('');
+  const [imageSrc, setImageSrc] = useState("");
 
   useEffect(() => {
     if (priority) {
@@ -30,14 +30,14 @@ const OptimizedBackground = ({
 
   // Generate optimized image URL
   const getOptimizedSrc = (originalSrc) => {
-    if (!originalSrc) return '';
+    if (!originalSrc) return "";
 
     // For Unsplash images, add optimization parameters
-    if (originalSrc.includes('unsplash.com')) {
+    if (originalSrc.includes("unsplash.com")) {
       const url = new URL(originalSrc);
-      url.searchParams.set('auto', 'format');
-      url.searchParams.set('fit', 'crop');
-      url.searchParams.set('q', quality.toString());
+      url.searchParams.set("auto", "format");
+      url.searchParams.set("fit", "crop");
+      url.searchParams.set("q", quality.toString());
       return url.toString();
     }
 
@@ -49,10 +49,10 @@ const OptimizedBackground = ({
   return (
     <div
       className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-300 ${
-        imageLoaded ? 'opacity-100' : 'opacity-0'
+        imageLoaded ? "opacity-100" : "opacity-0"
       } ${className}`}
       style={{
-        backgroundImage: optimizedSrc ? `url('${optimizedSrc}')` : 'none',
+        backgroundImage: optimizedSrc ? `url('${optimizedSrc}')` : "none",
         ...style,
       }}
       {...props}

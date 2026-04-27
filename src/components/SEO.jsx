@@ -32,7 +32,7 @@ export default function SEO({
           rel="preload"
           href={imageSrc}
           as="image"
-          type={imageSrc.includes('.webp') ? 'image/webp' : 'image/jpeg'}
+          type={imageSrc.includes(".webp") ? "image/webp" : "image/jpeg"}
         />
       ))}
 
