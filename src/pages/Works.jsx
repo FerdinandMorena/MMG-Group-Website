@@ -486,7 +486,7 @@ export default function Works() {
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.01 }}
               >
                 {projects
                   .filter((p) => p.featured)
@@ -539,7 +539,7 @@ export default function Works() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.01 }}
               >
                 All Projects
               </motion.h2>
@@ -550,7 +550,7 @@ export default function Works() {
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.01 }}
             >
               {filteredProjects.map((project) => (
                 <motion.div
