@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-export default function Logo({ className = "", noText = false }) {
+export default function Logo({ className = "" }) {
   return (
     <Link
       to="/"
@@ -17,3 +18,7 @@ export default function Logo({ className = "", noText = false }) {
     </Link>
   );
 }
+
+Logo.propTypes = {
+  className: PropTypes.string,
+};

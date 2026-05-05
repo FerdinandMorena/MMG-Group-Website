@@ -349,14 +349,22 @@ export default function Works() {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (!selectedProject) return;
-      if (event.key === "Escape") closeProject();
-      if (event.key === "ArrowRight") nextImage();
-      if (event.key === "ArrowLeft") prevImage();
+      if (event.key === "Escape") {
+        setSelectedProject(null);
+      } else if (event.key === "ArrowRight") {
+        setCurrentImageIndex((index) =>
+          index === selectedProject.images.length - 1 ? 0 : index + 1,
+        );
+      } else if (event.key === "ArrowLeft") {
+        setCurrentImageIndex((index) =>
+          index === 0 ? selectedProject.images.length - 1 : index - 1,
+        );
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedProject]);
+  }, [selectedProject, selectedProject?.images.length]);
 
   // Disable scroll when modal is open
   useEffect(() => {

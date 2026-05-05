@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const OptimizedBackground = ({
   src,
@@ -74,6 +75,14 @@ const OptimizedBackground = ({
       )}
     </div>
   );
+};
+
+OptimizedBackground.propTypes = {
+  src: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  style: PropTypes.object,
+  priority: PropTypes.bool,
+  quality: PropTypes.number,
 };
 
 export default OptimizedBackground;

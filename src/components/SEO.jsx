@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import PropTypes from "prop-types";
 
 const toArray = (v) => (Array.isArray(v) ? v : v ? [v] : []);
 
@@ -61,3 +62,20 @@ export default function SEO({
     </Helmet>
   );
 }
+
+SEO.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  keywords: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.string,
+  ]),
+  canonical: PropTypes.string,
+  ogImage: PropTypes.string,
+  jsonLd: PropTypes.object,
+  noindex: PropTypes.bool,
+  preloadImages: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.string,
+  ]),
+};

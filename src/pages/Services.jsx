@@ -17,6 +17,7 @@ import OptimizedImage from "../components/OptimizedImage";
 import OptimizedBackground from "../components/OptimizedBackground";
 import { SERVICES } from "../data/services";
 import { servicesIndexMeta, breadcrumbJsonLd } from "../lib/seo";
+import { Helmet } from "react-helmet-async";
 
 const serviceIcons = {
   roofing: Home,
@@ -26,23 +27,6 @@ const serviceIcons = {
   maintenance: Wrench,
   masonry: HardHat,
   "ceilings-partitioning": Grid3X3,
-};
-
-const serviceImages = {
-  roofing:
-    "https://images.unsplash.com/photo-1632873669009-05e9da94a09b?auto=format&fit=crop&w=800&q=80",
-  painting:
-    "https://images.unsplash.com/photo-1604357209793-fca5dca89f97?auto=format&fit=crop&w=800&q=80",
-  flooring:
-    "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=800&q=80",
-  construction:
-    "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80",
-  maintenance:
-    "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80",
-  masonry:
-    "https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?auto=format&fit=crop&w=800&q=80",
-  "ceilings-partitioning":
-    "https://images.unsplash.com/photo-1503387837-b154d5074bd2?auto=format&fit=crop&w=800&q=80",
 };
 
 const services = SERVICES.map((service) => ({

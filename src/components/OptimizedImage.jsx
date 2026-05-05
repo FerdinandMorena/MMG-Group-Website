@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const OptimizedImage = ({
   src,
@@ -10,7 +11,6 @@ const OptimizedImage = ({
   placeholder = "blur",
   blurDataURL,
   sizes = "100vw",
-  quality = 75,
   ...props
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -148,6 +148,18 @@ const OptimizedImage = ({
       )}
     </div>
   );
+};
+
+OptimizedImage.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  priority: PropTypes.bool,
+  placeholder: PropTypes.string,
+  blurDataURL: PropTypes.string,
+  sizes: PropTypes.string,
 };
 
 export default OptimizedImage;

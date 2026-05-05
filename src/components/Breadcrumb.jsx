@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ChevronRight, Home } from "lucide-react";
+import PropTypes from "prop-types";
 
 const Breadcrumb = ({ items }) => {
   return (
@@ -36,6 +37,15 @@ const Breadcrumb = ({ items }) => {
       </div>
     </nav>
   );
+};
+
+Breadcrumb.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      url: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 export default Breadcrumb;
